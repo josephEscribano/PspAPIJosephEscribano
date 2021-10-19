@@ -15,84 +15,84 @@ public class ServicePokemon {
 
 
     public List<ResultsItem> getGeneraciones() {
-        DaoPokemon dg = new DaoPokemon();
-        return dg.getGeneraciones();
+        DaoPokemon daoPokemon = new DaoPokemon();
+        return daoPokemon.getGeneraciones();
     }
 
     public List<String> getPokemonByGeneration(String generationName) {
-        DaoPokemon dg = new DaoPokemon();
-        List<String> ls = new ArrayList<>();
-        List<dao.modelos.generationData.PokemonSpeciesItem> lp = dg.getPokemonsByGeneration(generationName);
-        for (dao.modelos.generationData.PokemonSpeciesItem pk : lp) {
-            ls.add(pk.getName());
+        DaoPokemon daoPokemon = new DaoPokemon();
+        List<String> listNamesPokemons = new ArrayList<>();
+        List<dao.modelos.generationData.PokemonSpeciesItem> listPokemon = daoPokemon.getPokemonsByGeneration(generationName);
+        for (dao.modelos.generationData.PokemonSpeciesItem pk : listPokemon) {
+            listNamesPokemons.add(pk.getName());
         }
-        return ls;
+        return listNamesPokemons;
     }
 
     public String getRegionName(String generationName) {
-        DaoPokemon dg = new DaoPokemon();
+        DaoPokemon daoPokemon = new DaoPokemon();
 
-        return dg.getRegionName(generationName);
+        return daoPokemon.getRegionName(generationName);
 
     }
 
     public List<String> getTypes(String pokemonName) {
-        DaoPokemon dg = new DaoPokemon();
-        List<String> ls = new ArrayList<>();
-        List<TypesItem> lt = dg.getTypes(pokemonName);
-        for (TypesItem ti : lt) {
-            ls.add(ti.getType().getName());
+        DaoPokemon daoPokemon = new DaoPokemon();
+        List<String> listTypesNames = new ArrayList<>();
+        List<TypesItem> listTypes = daoPokemon.getTypes(pokemonName);
+        for (TypesItem ti : listTypes) {
+            listTypesNames.add(ti.getType().getName());
         }
-        return ls;
+        return listTypesNames;
 
     }
 
     public List<String> getAbilities(String pokemonName) {
-        DaoPokemon dg = new DaoPokemon();
-        List<String> ls = new ArrayList<>();
-        List<AbilitiesItemPokemons> ap = dg.getAbilities(pokemonName);
-        for (AbilitiesItemPokemons aip : ap) {
-            ls.add(aip.getAbility().getName());
+        DaoPokemon daoPokemon = new DaoPokemon();
+        List<String> listAbilitesNames = new ArrayList<>();
+        List<AbilitiesItemPokemons> listAbilities = daoPokemon.getAbilities(pokemonName);
+        for (AbilitiesItemPokemons aip : listAbilities) {
+            listAbilitesNames.add(aip.getAbility().getName());
         }
 
-        return ls;
+        return listAbilitesNames;
     }
 
     public List<String> getStats(String pokemonName) {
-        DaoPokemon dg = new DaoPokemon();
-        List<String> ls = new ArrayList<>();
-        List<StatsItem> lsi = dg.getStats(pokemonName);
-        for (StatsItem si : lsi) {
-            ls.add(si.toString());
+        DaoPokemon daoPokemon = new DaoPokemon();
+        List<String> listStatsNames = new ArrayList<>();
+        List<StatsItem> listStats = daoPokemon.getStats(pokemonName);
+        for (StatsItem si : listStats) {
+            listStatsNames.add(si.toString());
         }
 
-        return ls;
+        return listStatsNames;
     }
 
     public List<String> getGames(String pokemonName) {
-        DaoPokemon dg = new DaoPokemon();
-        List<String> ls = new ArrayList<>();
-        List<GameIndicesItem> gi = dg.getGames(pokemonName);
-        for (GameIndicesItem gin : gi) {
-            ls.add(gin.getVersion().getName());
+        DaoPokemon daoPokemon = new DaoPokemon();
+        List<String> listGamesNmaes = new ArrayList<>();
+        List<GameIndicesItem> listGames = daoPokemon.getGames(pokemonName);
+        for (GameIndicesItem gin : listGames) {
+            listGamesNmaes.add(gin.getVersion().getName());
         }
 
-        return ls;
+        return listGamesNmaes;
     }
 
     public Image getImage(String pokemonName) {
-        DaoPokemon dg = new DaoPokemon();
-        return dg.getImage(pokemonName);
+        DaoPokemon daoPokemon = new DaoPokemon();
+        return daoPokemon.getImage(pokemonName);
     }
 
     public List<String> getDataType(String typeName) {
-        DaoPokemon dg = new DaoPokemon();
-        List<String> tipos = new ArrayList<>();
-        List<MovesItem> mv = dg.getDataTypes(typeName).getMoves();
-        for (MovesItem mi : mv) {
-            tipos.add(mi.getName());
+        DaoPokemon daoPokemon = new DaoPokemon();
+        List<String> listMovesNames = new ArrayList<>();
+        List<MovesItem> listMoves = daoPokemon.getDataTypes(typeName).getMoves();
+        for (MovesItem mi : listMoves) {
+            listMovesNames.add(mi.getName());
         }
 
-        return tipos;
+        return listMovesNames;
     }
 }

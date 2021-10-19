@@ -22,9 +22,9 @@ public class FXMLPantallaTipos implements Initializable {
 
 
     public void chargeMovesByType(String typeName) {
-        ServicePokemon sp = new ServicePokemon();
+        ServicePokemon servicePokemon = new ServicePokemon();
         if (typeName != null) {
-            lvMoves.getItems().setAll(sp.getDataType(typeName));
+            lvMoves.getItems().setAll(servicePokemon.getDataType(typeName));
         } else {
             alert.setContentText("Selecciona un tipo");
             alert.showAndWait();

@@ -10,15 +10,15 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @Getter
-public class ConfigurationSingleton_Client {
-    private static ConfigurationSingleton_Client configClient;
+public class ConfigurationSingletonClient {
+    private static ConfigurationSingletonClient configClient;
 
-    private String path_base;
+    private String pathbase;
 
-    private ConfigurationSingleton_Client() {
+    private ConfigurationSingletonClient() {
     }
 
-    public static synchronized ConfigurationSingleton_Client getInstance(){
+    public static synchronized ConfigurationSingletonClient getInstance(){
         if (configClient == null){
             try{
                 Yaml yaml = new Yaml();
@@ -26,18 +26,18 @@ public class ConfigurationSingleton_Client {
                 it = yaml.loadAll(new FileInputStream("config/config.yaml"));
 
                 Map<String,String> mp = (Map) it.iterator().next();
-                configClient = new ConfigurationSingleton_Client();
-                configClient.setPath_base(mp.get("path_base"));
+                configClient = new ConfigurationSingletonClient();
+                configClient.setPathbase(mp.get("path_base"));
 
             }catch (FileNotFoundException e){
-                Logger.getLogger(ConfigurationSingleton_Client.class.getName()).log(Level.SEVERE,null,e);
+                Logger.getLogger(ConfigurationSingletonClient.class.getName()).log(Level.SEVERE,null,e);
             }
         }
         return configClient;
     }
 
-    private void setPath_base(String path_base) {
-        this.path_base = path_base;
+    private void setPathbase(String pathbase) {
+        this.pathbase = pathbase;
     }
 
 

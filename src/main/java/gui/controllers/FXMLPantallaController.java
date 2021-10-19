@@ -19,6 +19,9 @@ import java.util.ResourceBundle;
 public class FXMLPantallaController implements Initializable {
 
     private final Alert alert = new Alert(Alert.AlertType.INFORMATION);
+
+    @FXML
+    private ListView<String> lvMoves;
     @FXML
     private ImageView imPokemonTitulo;
     @FXML
@@ -53,7 +56,7 @@ public class FXMLPantallaController implements Initializable {
         imPokemonTitulo.setImage(image);
 
     }
-    public void Search(){
+    public void search(){
         boolean encontrado = true;
         if (!lvRegion.getItems().isEmpty()){
             for (String s:lvRegion.getItems()) {
@@ -73,8 +76,8 @@ public class FXMLPantallaController implements Initializable {
     }
     //selecciona una generacion para poder ver los pokemons de esa generacion
     public void chargeNamesGenerations() {
-        ServicePokemon sp = new ServicePokemon();
-        for (ResultsItem rt : sp.getGeneraciones()) {
+        ServicePokemon servicePokemon = new ServicePokemon();
+        for (ResultsItem rt : servicePokemon.getGeneraciones()) {
             cbGeneration.getItems().add(rt.getName());
         }
 
@@ -82,11 +85,11 @@ public class FXMLPantallaController implements Initializable {
 
     //Cada vez que se cambia de generación se muestra la region que corresponde a esa generación en el label
     public void chargePokemonByGeneration() {
-        ServicePokemon sp = new ServicePokemon();
+        ServicePokemon servicePokemon = new ServicePokemon();
         String generation = cbGeneration.getSelectionModel().getSelectedItem();
         if (generation != null) {
-            lvRegion.getItems().setAll(sp.getPokemonByGeneration(generation));
-            lRegion.setText(sp.getRegionName(generation));
+            lvRegion.getItems().setAll(servicePokemon.getPokemonByGeneration(generation));
+            lRegion.setText(servicePokemon.getRegionName(generation));
         } else {
             alert.setContentText("error al cargar los pokemons");
             alert.showAndWait();
@@ -95,14 +98,14 @@ public class FXMLPantallaController implements Initializable {
 
     //Cuando hablo de cargar juegos, me refiero a los juegos en los que  aparece el pokemon seleccionado.
     public void chargePokemonData() {
-        ServicePokemon sp = new ServicePokemon();
+        ServicePokemon servicePokemon = new ServicePokemon();
         String pokemon = lvRegion.getSelectionModel().getSelectedItem();
         if (pokemon != null) {
-            lvTypes.getItems().setAll(sp.getTypes(pokemon));
-            lvAbilities.getItems().setAll(sp.getAbilities(pokemon));
-            lvStats.getItems().setAll(sp.getStats(pokemon));
-            imPokemon.setImage(sp.getImage(pokemon));
-            lvGames.getItems().setAll(sp.getGames(pokemon));
+            lvTypes.getItems().setAll(servicePokemon.getTypes(pokemon));
+            lvAbilities.getItems().setAll(servicePokemon.getAbilities(pokemon));
+            lvStats.getItems().setAll(servicePokemon.getStats(pokemon));
+            imPokemon.setImage(servicePokemon.getImage(pokemon));
+            lvGames.getItems().setAll(servicePokemon.getGames(pokemon));
         } else {
             alert.setContentText("Selecciona un pokemon");
             alert.showAndWait();
@@ -133,6 +136,17 @@ public class FXMLPantallaController implements Initializable {
             alert.showAndWait();
         }
 
+    }
+
+    public void chargeMovesByType(String typeName) {
+        ServicePokemon servicePokemon = new ServicePokemon();
+        String type = lvTypes.getSelectionModel().getSelectedItem();
+        if (typeName != null) {
+            lvMoves.getItems().setAll(servicePokemon.getDataType(typeName));
+        } else {
+            alert.setContentText("Selecciona un tipo");
+            alert.showAndWait();
+        }
     }
 
 
