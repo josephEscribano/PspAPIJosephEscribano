@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane fx:id="root" prefHeight="950.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.FXMLPrincipalController">
+<BorderPane fx:id="root" prefHeight="950.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.FXMLPrincipalController">
    <center>
       <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="83.0" text="Inicio" BorderPane.alignment="CENTER" />
    </center>
