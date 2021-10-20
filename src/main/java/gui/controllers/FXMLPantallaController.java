@@ -1,6 +1,7 @@
 package gui.controllers;
 
 import dao.modelos.generationNames.ResultsItem;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -112,42 +113,14 @@ public class FXMLPantallaController implements Initializable {
         }
     }
 
-    public void chargeScreenTypes() {
-
-        FXMLLoader fxmlPantallaTipos = new FXMLLoader();
-        AnchorPane pantallaTipos;
-        FXMLPantallaTipos pantallaTiposController;
-        String type = lvTypes.getSelectionModel().getSelectedItem();
-        try {
-            if(type != null){
-                pantallaTipos = fxmlPantallaTipos.load(getClass().getResourceAsStream("/fxml/PantallaTipos.fxml"));
-                pantallaTiposController = fxmlPantallaTipos.getController();
-                pantallaTiposController.chargeMovesByType(type);
-
-                Stage stage = new Stage();
-                stage.setScene(new Scene(pantallaTipos));
-                stage.show();
-            }else{
-                alert.setContentText("Debes seleccionar un tipo");
-                alert.showAndWait();
-            }
-        } catch (IOException e) {
-            alert.setContentText("No se ha podido cargar la pantalla de tipos");
-            alert.showAndWait();
-        }
-
-    }
-
-    public void chargeMovesByType(String typeName) {
+    public void chargeMovesByType() {
         ServicePokemon servicePokemon = new ServicePokemon();
         String type = lvTypes.getSelectionModel().getSelectedItem();
-        if (typeName != null) {
-            lvMoves.getItems().setAll(servicePokemon.getDataType(typeName));
+        if (type != null) {
+            lvMoves.getItems().setAll(servicePokemon.getDataType(type));
         } else {
             alert.setContentText("Selecciona un tipo");
             alert.showAndWait();
         }
     }
-
-
 }
