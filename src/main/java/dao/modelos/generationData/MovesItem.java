@@ -1,4 +1,4 @@
-package dao.generationData;
+package dao.modelos.generationData;
 
 import com.google.gson.annotations.SerializedName;
 

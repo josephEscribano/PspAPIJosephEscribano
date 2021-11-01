@@ -8,13 +8,13 @@ public class NamesItem{
 	private String name;
 
 	@SerializedName("language")
-	private dao.generationData.Language language;
+	private dao.modelos.generationData.Language language;
 
 	public String getName(){
 		return name;
 	}
 
-	public dao.generationData.Language getLanguage(){
+	public dao.modelos.generationData.Language getLanguage(){
 		return language;
 	}
 

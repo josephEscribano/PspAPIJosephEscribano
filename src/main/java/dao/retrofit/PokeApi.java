@@ -8,8 +8,8 @@ import dao.modelos.types.Types;
 import retrofit2.Call;
 import retrofit2.http.*;
 
-public interface PokeApi {
 
+public interface PokeApi {
     @GET("generation")
     Call<Generaciones> getGeneraciones();
 

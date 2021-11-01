@@ -15,13 +15,13 @@ public class Generation{
 	private List<dao.modelos.generationData.NamesItem> names;
 
 	@SerializedName("main_region")
-	private dao.generationData.MainRegion mainRegion;
+	private dao.modelos.generationData.MainRegion mainRegion;
 
 	@SerializedName("version_groups")
 	private List<dao.modelos.generationData.VersionGroupsItem> versionGroups;
 
 	@SerializedName("moves")
-	private List<dao.generationData.MovesItem> moves;
+	private List<dao.modelos.generationData.MovesItem> moves;
 
 	@SerializedName("name")
 	private String name;
@@ -44,7 +44,7 @@ public class Generation{
 		return names;
 	}
 
-	public dao.generationData.MainRegion getMainRegion(){
+	public dao.modelos.generationData.MainRegion getMainRegion(){
 		return mainRegion;
 	}
 
@@ -52,7 +52,7 @@ public class Generation{
 		return versionGroups;
 	}
 
-	public List<dao.generationData.MovesItem> getMoves(){
+	public List<dao.modelos.generationData.MovesItem> getMoves(){
 		return moves;
 	}
 

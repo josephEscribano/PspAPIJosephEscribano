@@ -6,7 +6,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import utils.Constantes;
 
+import javax.inject.Inject;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -17,20 +19,30 @@ public class FXMLPrincipalController implements Initializable {
 
     //Anchorpaners y fxmlloader
     @FXML
-    private FXMLLoader fxmlpantalla;
-    @FXML
-    private AnchorPane pantalla;
+    private final FXMLLoader fxmlpantalla;
 
+    private AnchorPane pantalla;
+    private FXMLPantallaController pantallaController;
+
+    @Inject
+    public FXMLPrincipalController(FXMLLoader fxmlpantalla) {
+        this.fxmlpantalla = fxmlpantalla;
+
+    }
+
+    public BorderPane getPrincipal() {
+        return root;
+    }
 
     public void chargeScreen() {
-        fxmlpantalla = new FXMLLoader();
         try {
             if (pantalla == null) {
                 pantalla = fxmlpantalla.load(getClass().getResourceAsStream("/fxml/Pantalla.fxml"));
-
+                pantallaController = fxmlpantalla.getController();
+                pantallaController.setPrincipalController(this);
             }
         } catch (Exception e) {
-            alert.setContentText("La pantalla no se ha podido cargar");
+            alert.setContentText(Constantes.FALLO_PANTALLA);
             alert.showAndWait();
         }
         root.setCenter(pantalla);

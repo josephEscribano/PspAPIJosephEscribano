@@ -1,28 +1,34 @@
 package gui;
 
-import javafx.application.Application;
+
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import lombok.extern.log4j.Log4j2;
+import utils.Constantes;
 
-public class MainFX extends Application {
+import javax.enterprise.event.Observes;
+import javax.inject.Inject;
+import java.io.IOException;
 
-    public static void main(String[] args) {
-        launch(args);
+@Log4j2
+public class MainFX {
 
-    }
+    @Inject
+    FXMLLoader fxmlLoader;
 
-    @Override
-    public void start(Stage Stage) throws Exception {
-        FXMLLoader loaderMenu = new FXMLLoader(
-                getClass().getResource("/fxml/Principal.fxml"));
-        BorderPane root = loaderMenu.load();
-        Scene scene = new Scene(root);
-        Stage.setTitle("Pokedex");
-        Stage.setScene(scene);
-        Stage.show();
-        Stage.setResizable(false);
+    public void start(@Observes @StartupScene Stage stage) {
+        try {
+            Parent fxmlparent = fxmlLoader.load(getClass().getResourceAsStream("/fxml/Principal.fxml"));
+            stage.setScene(new Scene(fxmlparent));
+            stage.setTitle(Constantes.TITULO_PRINCIPAL);
+            stage.show();
+
+        } catch (IOException e) {
+            log.error(e.getMessage(), e);
+        }
+
     }
 
 
