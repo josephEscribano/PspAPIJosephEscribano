@@ -37,7 +37,7 @@ public class FXMLPrincipalController implements Initializable {
     public void chargeScreen() {
         try {
             if (pantalla == null) {
-                pantalla = fxmlpantalla.load(getClass().getResourceAsStream("/fxml/Pantalla.fxml"));
+                pantalla = fxmlpantalla.load(getClass().getResourceAsStream(Constantes.RUTA_PANTALLA));
                 pantallaController = fxmlpantalla.getController();
                 pantallaController.setPrincipalController(this);
             }

@@ -11,4 +11,6 @@ public class Constantes {
     public static final String FALLO_PANTALLA = "La pantalla no se ha podido cargar";
     public static final String PATH_BASE = "path_base";
     public static final String CAMPO_VACIO = "Debes escribir un pokemon";
+    public static final String RUTA_IMAGEN = "/images/PokemonTitulo.png";
+    public static final String RUTA_PANTALLA = "/fxml/Pantalla.fxml";
 }

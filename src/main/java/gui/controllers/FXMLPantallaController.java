@@ -63,7 +63,7 @@ public class FXMLPantallaController implements Initializable {
     }
 
     public void chargeImage() {
-        Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/PokemonTitulo.png")));
+        Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(Constantes.RUTA_IMAGEN)));
         imPokemonTitulo.setImage(image);
 
     }
